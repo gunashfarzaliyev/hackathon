@@ -1,37 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Socratic Sparring Partner
 
-## Getting Started
+> An AI-powered sparring partner that uses the Socratic method to challenge your assumptions, test your arguments, and help you refine your critical thinking skills.
 
-First, run the development server:
+## 📖 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+In an era where echo chambers and confirmation bias are the norm on the internet, it's becoming harder to find environments that truly challenge our thinking. The Socratic Sparring Partner is a web application that acts as a relentless intellectual debater. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Powered by Google's Gemini AI, this tool doesn't just give answers or validate opinions. Instead, it forces you to think deeper by continuously asking probing questions, exposing logical fallacies, and stress-testing your ideas.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Socratic Questioning:** The AI is strictly prompted to avoid giving direct answers, forcing you to articulate and defend your claims.
+- **Fallacy Detection:** Subtle identification of logical missteps (ad hominem, straw man, etc.) embedded in the AI's follow-up questions.
+- **Minimalist "Arena" UI:** A clean, distraction-free chat interface designed to keep focus purely on the intellectual debate.
+- **Real-time Streaming:** Fast, responsive interactions powered by Next.js Server Actions and the Gemini API.
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Framework:** Next.js (App Router)
+- **Frontend:** React, Tailwind CSS
+- **AI Brain:** Google Gemini API (`gemini-2.5-flash`)
+- **Deployment:** Docker, Google Cloud Run
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Getting Started Locally
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd hackaton
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Set up Environment Variables:**
+   Create a `.env.local` file in the root directory and add your Google Gemini API key:
+   ```env
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# hackathon
+4. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open the app:**
+   Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+
+## ☁️ Deployment (Google Cloud Run)
+
+This project includes a `Dockerfile` optimized for Next.js standalone builds.
+
+1. **Build and push the container to Google Artifact Registry:**
+   ```bash
+   gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/hackaton
+   ```
+
+2. **Deploy the container to Google Cloud Run:**
+   ```bash
+   gcloud run deploy hackaton-app \
+     --image gcr.io/YOUR_PROJECT_ID/hackaton \
+     --region us-central1 \
+     --allow-unauthenticated \
+     --set-env-vars="GEMINI_API_KEY=your_gemini_api_key_here"
+   ```
+
+## 🧠 What's Next
+
+- **Debate Grading:** End-of-session summaries scoring logical consistency.
+- **Topic Modules:** Pre-loaded historical or philosophical debates to practice defending specific stances.
+- **Voice Integration:** Practice verbal debating skills with Text-to-Speech and Speech-to-Text.
+
+---
+*Built during a Hackathon. Challenge your assumptions, refine your logic.*
