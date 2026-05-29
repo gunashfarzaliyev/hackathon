@@ -29,8 +29,8 @@ Powered by Google's Gemini AI, this tool doesn't just give answers or validate o
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
-   cd hackaton
+   git clone https://github.com/gunashfarzaliyev/hackathon
+   cd hackathon
    ```
 
 2. **Install dependencies:**
