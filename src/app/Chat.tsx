@@ -23,6 +23,21 @@ export default function Chat({ user }: { user: any }) {
     scrollToBottom();
   }, [messages]);
 
+  const handleTopicClick = (topic: string) => {
+    if (isPending) return;
+    
+    const newMessages: Message[] = [
+      ...messages,
+      { role: "user", content: topic },
+    ];
+    setMessages(newMessages);
+
+    startTransition(async () => {
+      const response = await chat(messages, topic);
+      setMessages((prev) => [...prev, response]);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isPending) return;
@@ -79,6 +94,29 @@ export default function Chat({ user }: { user: any }) {
               </div>
             </div>
           ))}
+          {messages.length === 1 && (
+            <div className="flex flex-col items-center mt-8 space-y-4 animate-in fade-in duration-700">
+              <p className="text-stone-400 text-sm">Or choose a starter topic:</p>
+              <div className="flex flex-wrap gap-2 justify-center max-w-lg">
+                {[
+                  { text: "Does free will exist?", philosopher: "Jean-Paul Sartre" },
+                  { text: "Is morality objective or subjective?", philosopher: "Immanuel Kant" },
+                  { text: "What is the meaning of a good life?", philosopher: "Aristotle" },
+                  { text: "Can we ever truly know anything?", philosopher: "René Descartes" }
+                ].map((topic) => (
+                  <button
+                    key={topic.text}
+                    onClick={() => handleTopicClick(topic.text)}
+                    disabled={isPending}
+                    className="flex flex-col items-center px-4 py-2 bg-white hover:bg-stone-100 text-stone-600 rounded-2xl text-sm transition-colors border border-stone-200 shadow-sm"
+                  >
+                    <span>{topic.text}</span>
+                    <span className="text-xs text-stone-400 italic mt-0.5">{topic.philosopher}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {isPending && (
             <div className="flex justify-start">
               <div className="bg-white border border-stone-200 px-6 py-4 rounded-2xl rounded-bl-none shadow-sm animate-pulse">

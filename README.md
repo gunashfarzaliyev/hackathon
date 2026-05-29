@@ -10,6 +10,7 @@ Powered by Google's Gemini AI, this tool doesn't just give answers or validate o
 
 ## ✨ Features
 
+- **Philosophical Starter Topics:** Quick-start buttons featuring classic questions paired with the famous philosophers who championed them (e.g., Sartre, Kant, Aristotle, Descartes).
 - **Socratic Questioning:** The AI is strictly prompted to avoid giving direct answers, forcing you to articulate and defend your claims.
 - **Fallacy Detection:** Subtle identification of logical missteps (ad hominem, straw man, etc.) embedded in the AI's follow-up questions.
 - **Minimalist "Arena" UI:** A clean, distraction-free chat interface designed to keep focus purely on the intellectual debate.
