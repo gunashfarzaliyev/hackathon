@@ -1,5 +1,7 @@
 # Socratic Sparring Partner
 
+![Socratic Sparring Partner Screenshot](https://i.imgur.com/7anidJ8.png)
+
 > An AI-powered sparring partner that uses the Socratic method to challenge your assumptions, test your arguments, and help you refine your critical thinking skills.
 
 ## 📖 Overview
